@@ -1,10 +1,13 @@
+import time
+
 from .pages.login_page import LoginPage
+from .test_main_page import MainPage
 
 
 def test_login_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
-    page = LoginPage(browser, link)
+    link = "http://selenium1py.pythonanywhere.com"
+    page = MainPage(browser, link)
     page.open()
-    page.should_be_login_form()
-    page.should_be_register_form()
-    page.should_be_login_url()
+    page.go_to_login_page()
+    login_page = LoginPage(browser, browser.current_url)
+    login_page.should_be_login_page()
