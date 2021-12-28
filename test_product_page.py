@@ -10,16 +10,16 @@ link = "http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handb
 
 
 class TestUserAddToBasketFromProductPage:
-    @pytest.fixture(scope="function",autouse=True)
+    @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
         login_page = LoginPage(browser, link)
         login_page.open()
         login_page.go_to_login_page()
         login_page.register_new_user()
         login_page.should_be_authorized_user()
-        #Это я пробовал логаут после окончания метода, пожалуйста, не обращяй внимания;)
-        #yield
-        #login_page.quit_accout()
+        # Это я пробовал логаут после окончания метода, пожалуйста, не обращяй внимания;)
+        # yield
+        # login_page.quit_accout()
 
     @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
