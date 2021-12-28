@@ -15,6 +15,9 @@ class BasePage():
         self.url = url
         self.browser.implicitly_wait(timeout)
 
+    def go_to_busket(self):
+        self.browser.find_element(*BasePageLocators.BASKET_LINK).click()
+
     def open(self):
         self.browser.get(self.url)
 

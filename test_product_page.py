@@ -1,7 +1,7 @@
 import pytest
 
 from .pages.product_page import ProductPage
-
+from .pages.basket_page import BasketPage
 
 # задание на параметризацию
 #@pytest.mark.parametrize('promo_number',
@@ -12,11 +12,11 @@ from .pages.product_page import ProductPage
     #page.open()
     #page.click_add_to_basket_button()
     #page.solve_quiz_and_get_code()
-    # page.item_prize_in_basket_correct()
+    #page.item_prize_in_basket_correct()
     #page.item_name_in_basket_correct()
 
 def test_guest_should_see_login_link_on_product_page(browser):
-    link = f"http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+    link = f"http://selenium1py.pythonanywhere.com/ru/"
     page = ProductPage(browser, link)
     page.open()
     page.should_be_login_link()
@@ -26,3 +26,11 @@ def test_guest_can_go_to_login_page_from_product_page (browser):
     page = ProductPage(browser, link)
     page.open()
     page.go_to_login_page()
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page (browser):
+    link = f"http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+    page = BasketPage(browser, link)
+    page.open()
+    page.go_to_busket()
+    page.basket_is_empty()
+    page.basket_empty_basket_text()
