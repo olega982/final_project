@@ -50,13 +50,10 @@ class BasePage():
         alert.send_keys(answer)
         alert.accept()
         try:
-            #WebDriverWait(self.browser, 3).until(EC.alert_is_present())
-            #time.sleep(4)
             alert = self.browser.switch_to.alert
             alert_text = alert.text
             print(f"Your code: {alert_text}")
             alert.accept()
-            time.sleep(10)
         except NoAlertPresentException:
             print("No second alert presented")
 
@@ -64,5 +61,13 @@ class BasePage():
         login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         login_link.click()
 
+    def quit_accout(self):
+        logout_link = self.browser.find_element(*BasePageLocators.LOGOUT_LINK)
+        logout_link.click()
+
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"

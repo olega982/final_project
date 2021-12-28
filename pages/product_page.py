@@ -16,3 +16,17 @@ class ProductPage(BasePage):
     def click_add_to_basket_button(self):
         find_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BUSKET_BUTTON)
         find_button.click()
+
+    def click_add_to_basket_button(self):
+        find_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BUSKET_BUTTON)
+        find_button.click()
+
+    def cant_see_success_message_after_adding_product_to_basket(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "lol"
+
+    def disappeared_after_adding_product_to_basket(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "lol"
+
+
+    def cant_see_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message should not be."
