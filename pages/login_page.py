@@ -1,9 +1,8 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
 from selenium import  webdriver
-import faker
 import time
-f = faker.Faker()
+
 
 
 class LoginPage(BasePage):
